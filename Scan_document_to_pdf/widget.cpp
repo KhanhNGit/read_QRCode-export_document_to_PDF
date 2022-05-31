@@ -53,9 +53,8 @@ Widget::Widget(QWidget *parent)
     // filter the image captured and export it to PDF
     connect(mCameraImageCapture, &QCameraImageCapture::imageCaptured, [=](int id,QImage mImage){
         Mat matImage = Mat(mImage.height(), mImage.width(), CV_8UC4, mImage.bits(), mImage.bytesPerLine());
-        Mat testImage = imread("qrcode3.jpg", IMREAD_COLOR);
-        Widget::readQRcode(testImage);
-        Mat matImageProcess = Widget::tranform(testImage);
+        Widget::readQRcode(matImage);
+        Mat matImageProcess = Widget::tranform(matImage);
         Widget::exportPDF(matImageProcess);
     });
 }
