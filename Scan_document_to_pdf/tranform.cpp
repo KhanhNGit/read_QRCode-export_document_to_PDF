@@ -143,11 +143,5 @@ Mat Widget::tranform(Mat src) {
         threshold_ = threshold_min;
     threshold(dst, dst, threshold_, 255, THRESH_TOZERO);
     */
-    double dst_height = dst.size().height;
-    double dst_height_fixed = 750;
-    double result_zoom = dst_height / dst_height_fixed;
-    Mat final_result;
-    cv::resize(dst, final_result, Size(), 1 / result_zoom, 1 / result_zoom);
-    return final_result;
-
+    return dst;
 }
